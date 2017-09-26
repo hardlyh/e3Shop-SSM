@@ -120,10 +120,10 @@ var E3 = {
     			    closed:true,
     			    iconCls:'icon-save',
     			    title:'选择类目',
-    			    onOpen : function(){
+    			    onOpen : function(){   // 打开时触发事件
     			    	var _win = this;
-    			    	$("ul",_win).tree({
-    			    		url:'/item/cat/list',
+    			    	$("ul",_win).tree({  // this.find($("ul"))缩小查询范围
+    			    		url:'/item/cat/list',   // 树加载url
     			    		animate:true,
     			    		onClick : function(node){
     			    			if($(this).tree("isLeaf",node.target)){

@@ -1,6 +1,7 @@
 package lyh.e3.service;
 
 import lyh.e3.common.pojo.EasyUiGridResult;
+import lyh.e3.common.pojo.EasyUiTreeNode;
 import lyh.e3.pojo.TbItem;
 
 public interface ItemService {

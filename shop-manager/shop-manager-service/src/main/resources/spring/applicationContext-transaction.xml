@@ -28,8 +28,7 @@
 	</tx:advice>
 	<!-- 切面 -->
 	<aop:config>
-		<aop:advisor advice-ref="txAdvice"
-			pointcut="execution(* lyh.e3.service..*.*(..))" />
+		<aop:advisor advice-ref="txAdvice" pointcut="execution(* lyh.e3.service..*.*(..))" />
 	</aop:config>
 	
 	
