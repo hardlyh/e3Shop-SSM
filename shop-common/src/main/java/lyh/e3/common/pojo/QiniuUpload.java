@@ -13,46 +13,47 @@ import com.qiniu.storage.model.DefaultPutRet;
 import com.qiniu.util.Auth;
 
 /**
- * 七牛云上传组件
- * 
  * @ClassName: QiniuUpload
- * @Description:
+ * @Description: 七牛云上传组件
  * @author student.lyh
  * @date 2017年9月26日 下午5:11:59
  */
 public class QiniuUpload {
-    private static Zone zone;
-    private static String accessKey;
-    private static String secretKey;
-    private static String bucket;
-    
-    static{
-        InputStream ins=QiniuUpload.class.getResourceAsStream("../../../../qiniu.properties");  
-        Properties p = new Properties();  
-        try {  
-            p.load(ins);  
-        } catch (Exception e) {  
-            e.printStackTrace();  
-        }  
-        accessKey = p.getProperty("accessKey");
-        secretKey = p.getProperty("secretKey");
-        bucket = p.getProperty("bucket");
-        switch(p.getProperty("FixedZone")){
-            case "0":zone=Zone.zone0();break;
-            case "1":zone=Zone.zone1();break;
-            case "2":zone=Zone.zone2();break;
-            case "3":zone=Zone.zoneNa0();break;
-        }
-    }
+//    private static Zone zone;
+//    private static String accessKey;
+//    private static String secretKey;
+//    private static String bucket;
+//    
+//    static{
+//        InputStream ins=QiniuUpload.class.getResourceAsStream("../../../../qiniu.properties");  
+//        System.out.println(ins);
+//        Properties p = new Properties();  
+//        try {  
+//            p.load(ins);  
+//        } catch (Exception e) {  
+//            e.printStackTrace();  
+//        }  
+//        accessKey = p.getProperty("accessKey");
+//        secretKey = p.getProperty("secretKey");
+//        bucket = p.getProperty("bucket");
+//        String str =p.getProperty("fixedZone");
+//        System.out.println(str);
+//        switch(str){
+//            case "0":zone=Zone.zone0();break;
+//            case "1":zone=Zone.zone1();break;
+//            case "2":zone=Zone.zone2();break;
+//            case "3":zone=Zone.zoneNa0();break;
+//        }
+//    }
 
     public static String upload(InputStream in, String filename) throws Exception {
-        Configuration cfg = new Configuration(zone);
+        Configuration cfg = new Configuration(Zone.zone0());
         UploadManager uploadManager = new UploadManager(cfg);
         String key = filename;
-      //  String accessKey = "mIIKJO9gxKLSKEiUEiIRZHuU_oXPkYpZOhotSIYN";
-      //  String secretKey = "r9yHYzYX77jr1yoF7mv7jZCaL2xNgXNdPmE4N9U0";
-       // String bucket = "frist";
-     //   String bucket = "e3-shop";
+        String accessKey = "mIIKJO9gxKLSKEiUEiIRZHuU_oXPkYpZOhotSIYN";
+        String secretKey = "r9yHYzYX77jr1yoF7mv7jZCaL2xNgXNdPmE4N9U0";
+        // String bucket = "frist";
+        String bucket = "e3-shop";
         Auth auth = Auth.create(accessKey, secretKey);
         String upToken = auth.uploadToken(bucket);
         try {

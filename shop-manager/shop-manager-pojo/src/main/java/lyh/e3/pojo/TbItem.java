@@ -25,6 +25,10 @@ public class TbItem implements Serializable{
     private Date created;
 
     private Date updated;
+    
+    public static final int Instock = 2;  // 正常
+    public static final int Reshelf = 1;  // 下架
+    public static final int Delete = 3;  // 删除
 
     public Long getId() {
         return id;

@@ -17,7 +17,7 @@
         </tr>
     </thead>
 </table>
-<div id="itemEditWindow" class="easyui-window" title="编辑商品" data-options="modal:true,closed:true,iconCls:'icon-save',href:'/rest/page/item-edit'" style="width:80%;height:80%;padding:10px;">
+<div id="itemEditWindow" class="easyui-window" title="编辑商品" data-options="modal:true,closed:true,iconCls:'icon-save',href:'/item-edit'" style="width:80%;height:80%;padding:10px;">
 </div>
 <script>
 
@@ -63,10 +63,10 @@
         			$.getJSON('/rest/item/query/item/desc/'+data.id,function(_data){
         				if(_data.status == 200){
         					//UM.getEditor('itemeEditDescEditor').setContent(_data.data.itemDesc, false);
-        					itemEditEditor.html(_data.data.itemDesc);
+        					itemEditEditor.html(_data.msg);
         				}
         			});
-        			
+        			/*
         			//加载商品规格
         			$.getJSON('/rest/item/param/item/query/'+data.id,function(_data){
         				if(_data && _data.status == 200 && _data.data && _data.data.paramData){
@@ -93,7 +93,7 @@
         					 html+= "</ul>";
         					 $("#itemeEditForm .params td").eq(1).html(html);
         				}
-        			});
+        			});*/
         			
         			E3.init({
         				"pics" : data.image,
@@ -122,6 +122,8 @@
             				$.messager.alert('提示','删除商品成功!',undefined,function(){
             					$("#itemList").datagrid("reload");
             				});
+            			}else{
+            				$.messager.alert('提示','删除商品失败!');
             			}
             		});
         	    }
@@ -144,7 +146,9 @@
             				$.messager.alert('提示','下架商品成功!',undefined,function(){
             					$("#itemList").datagrid("reload");
             				});
-            			}
+            			}else{
+                            $.messager.alert('提示','下架商品失败!');
+                        }
             		});
         	    }
         	});

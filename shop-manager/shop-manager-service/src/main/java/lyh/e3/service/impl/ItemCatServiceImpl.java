@@ -25,8 +25,6 @@ public class ItemCatServiceImpl implements ItemCatService{
     
     @Autowired
     private TbItemCatMapper catMapper;
-
-    
     /* 
      * 根据id返回子树
      */
